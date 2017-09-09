@@ -12,3 +12,23 @@ CoefDialog::~CoefDialog()
 {
     delete ui;
 }
+
+double CoefDialog::getHumanBirthRate() const
+{
+    return ui->spinHumanBirthRate->value();
+}
+
+double CoefDialog::getPredatorBirthRate() const
+{
+    return ui->spinPredatorsBirthRate->value();
+}
+
+double CoefDialog::getKillRatio() const
+{
+    return ui->spinKillRatio->value();
+}
+
+double CoefDialog::getPredatorsLoss() const
+{
+    return ui->spinLossPredatorsRate->value();
+}

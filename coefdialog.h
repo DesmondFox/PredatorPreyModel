@@ -7,6 +7,8 @@ namespace Ui {
 class CoefDialog;
 }
 
+
+
 class CoefDialog : public QDialog
 {
     Q_OBJECT
@@ -14,6 +16,11 @@ class CoefDialog : public QDialog
 public:
     explicit CoefDialog(QWidget *parent = 0);
     ~CoefDialog();
+
+    double getHumanBirthRate() const;
+    double getPredatorBirthRate() const;
+    double getKillRatio() const;
+    double getPredatorsLoss() const;
 
 private:
     Ui::CoefDialog *ui;

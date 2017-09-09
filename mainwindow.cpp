@@ -48,17 +48,8 @@ void MainWindow::on_spinStep_editingFinished()
 
 void MainWindow::on_pushSolve_clicked()
 {
-    // temp
-    this->diffSettings.birthRateOfPeople = 2.0;
-    this->diffSettings.killRatio = 0.02;
-    this->diffSettings.birthRateOfPredators = 0.01;
-    this->diffSettings.predatorsLossRate = 1.0;
 
-    this->diffSettings.endTime = ui->spinEndOfTime->value();
-    this->diffSettings.step = ui->spinStep->value();
-    this->diffSettings.startPredatorsCount = ui->spinPredators->value();
-    this->diffSettings.startHumansCount = ui->spinHumans->value();
-    this->diffSettings.startTime = 0.0;
+    updateCoefs();
 
     DataVector* vec = this->diff->getSolve(this->diffSettings);
     ui->plot->draw(vec);
@@ -74,4 +65,26 @@ void MainWindow::showEndData(const DiffSingleData &lastElement)
                  .arg(QString::number((int) lastElement.x))
                  .arg(QString::number((int) lastElement.y)));
     ui->labelResult->setText(text);
+}
+
+void MainWindow::updateCoefs()
+{
+    this->diffSettings.birthRateOfPeople    = coefDlg.getHumanBirthRate();
+    this->diffSettings.birthRateOfPredators = coefDlg.getPredatorBirthRate();
+    this->diffSettings.killRatio            = coefDlg.getKillRatio();
+    this->diffSettings.predatorsLossRate    = coefDlg.getPredatorsLoss();
+
+    this->diffSettings.endTime = ui->spinEndOfTime->value();
+    this->diffSettings.step = ui->spinStep->value();
+    this->diffSettings.startPredatorsCount = ui->spinPredators->value();
+    this->diffSettings.startHumansCount = ui->spinHumans->value();
+    this->diffSettings.startTime = 0.0;
+}
+
+void MainWindow::on_pushKoefs_clicked()
+{
+    if (this->coefDlg.exec() == CoefDialog::Accepted)
+    {
+        updateCoefs();
+    }
 }

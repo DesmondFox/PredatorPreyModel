@@ -22,13 +22,19 @@ DataVector *EulersMethod::differentiate(const DiffSettings &settings)
     int stepCount = (b / h) + 1;
     double currentTime = a + h;
 
+    double  alp     = settings.birthRateOfPeople,
+            beta    = settings.killRatio,
+            gamma   = settings.predatorsLossRate,
+            delta   = settings.birthRateOfPredators;
+
+
     double  x, y;
     double  x_prev = beginData.x,
             y_prev = beginData.y;
     for (int j = 1; j <= stepCount; j++)
     {
-        x = x_prev + h*((2.0-0.02*y_prev)*x_prev);
-        y = y_prev + h*(-1.0*y_prev + 0.01*x_prev*y_prev);
+        x = x_prev + h*((alp-beta*y_prev)*x_prev);
+        y = y_prev + h*(-gamma*y_prev + delta*x_prev*y_prev);
 
         DiffSingleData currentValues;
         currentValues.x = x;

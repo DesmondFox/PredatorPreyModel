@@ -9,9 +9,9 @@
 /// Структура для хранения единицы данных после дифференциации
 struct DiffSingleData
 {
-    qreal   t;  // Текущее время
-    qreal   x;  // Количество людей на текущий момент времени
-    qreal   y;  // Количество хищников на текущий момент времени
+    double   t;  // Текущее время
+    double   x;  // Количество людей на текущий момент времени
+    double   y;  // Количество хищников на текущий момент времени
 };
 
 ///
@@ -19,17 +19,17 @@ struct DiffSingleData
 /// Структура для хранения настроек дифференциирования
 struct DiffSettings
 {
-    qreal   startHumansCount;
-    qreal   startPredatorsCount;
+    double   startHumansCount;
+    double   startPredatorsCount;
 
-    qreal   startTime;
-    qreal   endTime;
-    qreal   step;
+    double   startTime;
+    double   endTime;
+    double   step;
 
-    qreal   birthRateOfPeople;
-    qreal   killRatio;
-    qreal   birthRateOfPredators;
-    qreal   predatorsLossRate;
+    double   birthRateOfPeople;
+    double   killRatio;
+    double   birthRateOfPredators;
+    double   predatorsLossRate;
 };
 
 typedef QVector<DiffSingleData> DataVector;

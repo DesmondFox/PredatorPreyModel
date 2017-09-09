@@ -5,6 +5,7 @@
 #include "diffulusion.h"
 #include "eilersmethod.h"
 #include "rungecuttamethod.h"
+#include "coefdialog.h"
 
 namespace Ui {
 class MainWindow;
@@ -34,6 +35,8 @@ private slots:
 
     void on_pushSolve_clicked();
 
+    void on_pushKoefs_clicked();
+
 private:
     Ui::MainWindow *ui;
     Diffulusion *diff;
@@ -41,8 +44,11 @@ private:
     RungeCuttaMethod rungeCuttaMethod;
     DiffSettings diffSettings;
 
+    CoefDialog coefDlg;
     // Для показа результата на последний момент времени
     void showEndData(const DiffSingleData &lastElement);
+    // Заполнить структуру коэффициентами
+    void updateCoefs();
 };
 
 #endif // MAINWINDOW_H
