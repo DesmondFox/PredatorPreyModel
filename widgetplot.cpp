@@ -25,7 +25,7 @@ void WidgetPlot::draw(const DataVector *vector)
     humans      = new QSplineSeries();
     predators   = new QSplineSeries();
     predators->setName("Хищники");
-    humans->setName("Люди");
+    humans->setName("Жертвы");
     for (DiffSingleData dt : *vector)
     {
         if (dt.x > 100000 || dt.y > 100000)
